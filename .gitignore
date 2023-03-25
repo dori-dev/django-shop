@@ -1,0 +1,15 @@
+env/
+__pycache__
+db.sqlite3
+*/media/users/
+*/media/images/
+*/media/profile.png.*
+Todo.md
+cert.crt
+cert.key
+.env
+posts.json
+users.json
+add_fake_data.py
+.vscode
+staticfiles
