@@ -15,8 +15,8 @@ class User(AbstractBaseUser):
     )
     full_name = models.CharField(
         max_length=64,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
     )
     is_active = models.BooleanField(
         default=True,
