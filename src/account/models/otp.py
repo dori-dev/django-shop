@@ -7,17 +7,17 @@ class OtpCode(models.Model):
     phone = models.CharField(
         max_length=11,
     )
-    code = models.PositiveSmallIntegerField()
+    code = models.CharField(
+        max_length=4,
+        null=True,
+        blank=True,
+    )
     created = models.DateTimeField(
         auto_now=True,
     )
 
     def generate_code(self):
-        code = int(
-            "".join(
-                choices("123456789", k=4)
-            )
-        )
+        code = "".join(choices("123456789", k=4))
         self.code = code
         return code
 
