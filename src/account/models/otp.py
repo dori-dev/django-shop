@@ -19,6 +19,7 @@ class OtpCode(models.Model):
     def generate_code(self):
         code = "".join(choices("123456789", k=4))
         self.code = code
+        self.save()
         return code
 
     def __str__(self) -> str:
