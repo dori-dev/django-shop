@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Verify
+{% endblock title %}
+
+{% block content %}
+  <h1>Verify</h1>
+  <form action="" method="post">
+    {{ form.as_p }}
+    <input type="submit" value="Verify">
+    {% csrf_token %}
+  </form>
+{% endblock content %}
