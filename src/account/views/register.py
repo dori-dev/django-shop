@@ -18,11 +18,11 @@ class RegisterView(View):
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            phone = form.changed_data.get('phone')
-            otp = models.OtpCode.objects.create(phone=phone)
+            phone = form.cleaned_data.get('phone')
+            otp, _ = models.OtpCode.objects.get_or_create(phone=phone)
             code = otp.generate_code()
             utils.send_otp_code(phone, code)
-            request.session['phone'] = phone
+            request.session['user'] = form.cleaned_data
             messages.success(
                 request,
                 'We send a verification code to your phone!',
