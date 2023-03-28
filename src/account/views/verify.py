@@ -24,7 +24,7 @@ class VerifyView(View):
     def get(self, request):
         form = self.form_class
         context = {
-            'forms': form,
+            'form': form,
         }
         return render(request, 'account/verify.html', context)
 
@@ -40,7 +40,7 @@ class VerifyView(View):
                 login(request, user)
                 return redirect('home:index')
         context = {
-            'forms': form,
+            'form': form,
         }
         return render(request, 'account/verify.html', context)
 
