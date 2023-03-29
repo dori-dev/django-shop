@@ -1,3 +1,4 @@
 Django==4.1.7
 kavenegar==1.1.2
 django-dotenv==1.4.2
+Pillow==9.4.0
