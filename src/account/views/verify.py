@@ -8,6 +8,7 @@ from account import forms, models
 
 class VerifyView(View):
     form_class = forms.VerifyCodeForm
+    template_name = 'account/verify.html'
 
     def dispatch(self, request, *args, **kwargs):
         user_info = request.session.get('user')
@@ -26,7 +27,7 @@ class VerifyView(View):
         context = {
             'form': form,
         }
-        return render(request, 'account/verify.html', context)
+        return render(request, self.template_name, context)
 
     def post(self, request):
         otp = self.get_otp_obj(request)
@@ -42,7 +43,7 @@ class VerifyView(View):
         context = {
             'form': form,
         }
-        return render(request, 'account/verify.html', context)
+        return render(request, self.template_name, context)
 
     def get_otp_obj(self, request):
         phone = self.user_info.get('phone')

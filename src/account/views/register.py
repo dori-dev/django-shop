@@ -7,13 +7,14 @@ from account import forms, models, utils
 
 class RegisterView(View):
     form_class = forms.RegistrationForm
+    template_name = 'account/register.html'
 
     def get(self, request):
         form = self.form_class
         context = {
             'form': form,
         }
-        return render(request, 'account/register.html', context)
+        return render(request, self.template_name, context)
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -32,4 +33,4 @@ class RegisterView(View):
         context = {
             'form': form,
         }
-        return render(request, 'account/register.html', context)
+        return render(request, self.template_name, context)
