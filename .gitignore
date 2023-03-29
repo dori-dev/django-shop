@@ -1,10 +1,7 @@
 env/
 __pycache__
 db.sqlite3
-*/media/users/
-*/media/images/
-*/media/profile.png.*
-Todo.md
+media/
 cert.crt
 cert.key
 .env
