@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     'account.apps.AccountConfig',
     'home.apps.HomeConfig',
+    'product.apps.ProductConfig',
 ]
 
 INSTALLED_APPS = [
@@ -126,7 +127,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
