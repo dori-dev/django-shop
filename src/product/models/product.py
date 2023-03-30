@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Product(models.Model):
@@ -33,6 +34,9 @@ class Product(models.Model):
         ordering = (
             '-updated',
         )
+
+    def get_absolute_url(self):
+        return reverse('product:detail', args=(self.slug,))
 
     def __str__(self) -> str:
         return self.name
