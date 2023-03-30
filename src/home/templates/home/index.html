@@ -11,4 +11,15 @@ Home
 
 {% block content %}
 <h1 class="title">Home</h1>
+
+{% for product in products %}
+  <div class="card" style="width: 18rem;">
+    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">{{ product.description }}</p>
+    </div>
+  </div>
+{% endfor %}
+
 {% endblock content %}
