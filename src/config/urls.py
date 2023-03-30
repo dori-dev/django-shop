@@ -9,4 +9,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls', 'account')),
     path('', include('home.urls', 'home')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
