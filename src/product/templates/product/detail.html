@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ product.name }}
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'product/css/styles.css' %}">
+{% endblock style %}
+
+{% block content %}
+<h2 class="title">{{ product.name }}</h2>
+<small>{{ product.updated }}</small>
+<p>
+  {{ product.price }} Toman
+</p>
+<img src="{{ product.image.url }}" alt="{{ product.name }}">
+<p>
+  {{ product.description }}
+</p>
+{% endblock content %}
