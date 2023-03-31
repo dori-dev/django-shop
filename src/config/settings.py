@@ -12,9 +12,22 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+DOT_ENV_PATH = BASE_DIR / '.env'
+if not DOT_ENV_PATH.exists():
+    DOT_ENV_PATH = BASE_DIR / 'src/.env'
+if DOT_ENV_PATH.exists():
+    dotenv.read_dotenv(str(DOT_ENV_PATH))
+else:
+    print(
+        "No .env found, be sure to make it.\n"
+        "You can rename .env.example file to .env and "
+        "set your environ variable in it."
+    )
 
 
 # Quick-start development settings - unsuitable for production
