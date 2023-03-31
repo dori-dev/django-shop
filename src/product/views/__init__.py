@@ -1,1 +1,1 @@
-from product.views.product import ProductDetail  # noqa
+from product.views.detail import ProductDetail  # noqa
