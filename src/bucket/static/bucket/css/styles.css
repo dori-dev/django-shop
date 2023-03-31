@@ -1,0 +1,14 @@
+svg {
+  fill: #fefefe;
+  width: 32px;
+  height: 32px;
+  transition: fill 0.3s;
+}
+
+td.download:hover svg {
+  fill: #00b894;
+}
+
+td.delete:hover svg {
+  fill: #d63031;
+}

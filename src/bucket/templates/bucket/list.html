@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 Bucket List
 {% endblock title %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'bucket/css/styles.css' %}">
+{% endblock style %}
+
 {% block content %}
 <div class="p-2">
-  <table class="mt-3 table table-dark table-striped">
+  <table class="mt-3 table table-dark table-striped text-center">
     <thead>
       <tr>
         <th scope="col"></th>
@@ -22,8 +27,20 @@ Bucket List
           <th scope="row">{{ forloop.counter }}</th>
           <td>{{ object.Key }}</td>
           <td>{{ object.Size|filesizeformat }}</td>
-          <td>download</td>
-          <td>delete</td>
+          <td class="download">
+            <a href="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <path d="M537.6 226.6C541.7 215.9 544 204.2 544 192c0-53-43-96-96-96c-19.69 0-38.09 6-53.31 16.2C367 64.2 315.3 32 256 32C167.6 32 96 103.6 96 192c0 2.703 .1094 5.445 .2031 8.133C40.2 219.8 0 273.2 0 336C0 415.5 64.5 480 144 480H512c70.69 0 128-57.3 128-128C640 290.1 596 238.4 537.6 226.6zM424.1 320.1l-88 88C334.4 411.5 328.5 416 320 416s-14.4-4.467-16.97-7.031l-88-88c-9.375-9.375-9.375-24.56 0-33.94s24.56-9.375 33.94 0L296 334.1V184C296 170.8 306.8 160 320 160s24 10.75 24 24v150.1l47.03-47.03c9.375-9.375 24.56-9.375 33.94 0S434.3 311.6 424.1 320.1z"/>
+              </svg>
+            </a>
+          </td>
+          <td class="delete">
+            <a href="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M53.21 467c1.562 24.84 23.02 45 47.9 45h245.8c24.88 0 46.33-20.16 47.9-45L416 128H32L53.21 467zM432 32H320l-11.58-23.16c-2.709-5.42-8.25-8.844-14.31-8.844H153.9c-6.061 0-11.6 3.424-14.31 8.844L128 32H16c-8.836 0-16 7.162-16 16V80c0 8.836 7.164 16 16 16h416c8.838 0 16-7.164 16-16V48C448 39.16 440.8 32 432 32z"/>
+              </svg>
+            </a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>

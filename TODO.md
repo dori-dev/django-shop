@@ -8,3 +8,4 @@ user creation form
             f'<a target="_blank" href="{url}">Url</a>'
         )
 admin category and product url
+navbar
