@@ -14,3 +14,4 @@ celery -A config worker -l INFO
 async otp send with celery
 login with otp
 forgot password
+python manage.py clean_otp
