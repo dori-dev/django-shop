@@ -2,3 +2,5 @@ Django==4.1.7
 kavenegar==1.1.2
 django-dotenv==1.4.2
 Pillow==9.4.0
+django-storages==1.13.2
+boto3==1.26.103
