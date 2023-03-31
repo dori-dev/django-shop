@@ -1,3 +1,5 @@
+from os.path import split
+
 from django.conf import settings
 import boto3
 
@@ -33,6 +35,15 @@ class Bucket:
             Key=key,
         )
         return True
+
+    def download_object(self, key):
+        file_name = settings.AWS_LOCAL_STORAGE / split(key)[-1]
+        with open(file_name, 'wb') as file:
+            self.conn.download_fileobj(
+                settings.AWS_STORAGE_BUCKET_NAME,
+                key,
+                file,
+            )
 
 
 bucket = Bucket()
