@@ -11,3 +11,6 @@ admin category and product url
 
 redis-server
 celery -A config worker -l INFO
+async otp send with celery
+login with otp
+forgot password
