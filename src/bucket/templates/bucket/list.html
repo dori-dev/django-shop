@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bucket List
+{% endblock title %}
+
+{% block content %}
+<div class="p-2">
+  <table class="mt-3 table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Size</th>
+        <th scope="col">Download</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in objects %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ object.Key }}</td>
+          <td>{{ object.Size|filesizeformat }}</td>
+          <td>download</td>
+          <td>delete</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}
