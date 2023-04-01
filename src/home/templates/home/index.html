@@ -11,12 +11,22 @@ Home
 
 {% block content %}
 <h1 class="title">Home</h1>
-<div class="row">
+
+<div class="m-5">
+  <a href="{% url 'home:index' %}" class="btn {% if current_category %}btn-outline-secondary{% else %}btn-secondary{% endif %}">All</a>
+  {% for category in categories %}
+    <a href="{% url 'product:category' category.slug %}" class="btn {% if current_category == category.slug %}btn-secondary{% else %}btn-outline-secondary{% endif %}">{{ category.name }}</a>
+  {% endfor %}
+</div>
+
+<div class="row mt-4 mx-2">
   {% for product in products %}
-    <div class="col-lg-4 col-md-6 col-12 mb-4">
-      <div class="card">
+    <div class="col-lg-3 col-md-4 col-6 mb-4">
+      <div class="card h-100">
         <a href="{{ product.get_absolute_url }}">
-          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="p-4">
+            <img src="{{ product.image.url }}" class="card-img-top img-fluid w-100" alt="{{ product.name }}">
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">{{ product.description }}</p>

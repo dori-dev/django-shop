@@ -9,7 +9,9 @@ class Index(View):
         products = models.Product.objects.filter(
             available=True,
         )
+        categories = models.Category.objects.values('name', 'slug')
         context = {
             'products': products,
+            'categories': categories,
         }
         return render(request, 'home/index.html', context)

@@ -48,3 +48,8 @@ supervisorctl reread
 supervisorctl update
 
 supervisorctl {status|start|stop|restart} shop
+
+
+
+
+use easy-thumbnails
