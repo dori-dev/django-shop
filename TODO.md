@@ -15,3 +15,13 @@ async otp send with celery
 login with otp
 forgot password
 python manage.py clean_otp
+
+
+class OtpCode(models.Model):
+    phone = models.CharField(
+        max_length=11,
+        unique=True
+    )
+
+for celery beat:
+celery -A config beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler

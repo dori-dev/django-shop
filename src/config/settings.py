@@ -46,6 +46,7 @@ ALLOWED_HOSTS = []
 
 THIRD_PARTY_APPS = [
     'storages',
+    'django_celery_beat',
 ]
 
 LOCAL_APPS = [
@@ -130,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 USE_I18N = True
 USE_TZ = True
 
