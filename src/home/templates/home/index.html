@@ -11,17 +11,19 @@ Home
 
 {% block content %}
 <h1 class="title">Home</h1>
-
-{% for product in products %}
-  <div class="card" style="width: 18rem;">
-    <a href="{{ product.get_absolute_url }}">
-      <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-      <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">{{ product.description }}</p>
+<div class="row">
+  {% for product in products %}
+    <div class="col-lg-4 col-md-6 col-12 mb-4">
+      <div class="card">
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
-{% endfor %}
-
+    </div>
+  {% endfor %}
+</div>
 {% endblock content %}
