@@ -8,7 +8,6 @@ class ProductAdmin(admin.ModelAdmin):
     ]
     list_display = [
         'name',
-        'category',
         'price',
         'link',
         'available',
@@ -20,7 +19,6 @@ class ProductAdmin(admin.ModelAdmin):
     ]
     search_fields = [
         'name',
-        'category',
         'description',
     ]
 

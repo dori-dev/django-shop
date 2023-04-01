@@ -2,6 +2,16 @@ from django.db import models
 
 
 class Category(models.Model):
+    parent = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        related_name='children',
+        null=True,
+        blank=True,
+    )
+    is_child = models.BooleanField(
+        default=False,
+    )
     name = models.CharField(
         max_length=256,
     )
