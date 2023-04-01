@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static number %}
 
 {% block title %}
 {{ product.name }}
@@ -13,7 +13,7 @@
 <h2 class="title">{{ product.name }}</h2>
 <small>{{ product.updated }}</small>
 <p>
-  {{ product.price }} Toman
+  {{ product.price|format_comma }} Toman
 </p>
 <img src="{{ product.image.url }}" alt="{{ product.name }}">
 <p>
