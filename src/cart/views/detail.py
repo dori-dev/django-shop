@@ -2,6 +2,6 @@ from django.shortcuts import render
 from django.views import View
 
 
-class CartView(View):
+class CartDetailView(View):
     def get(self, request):
-        return render(request, 'order/cart.html')
+        return render(request, 'cart/detail.html')

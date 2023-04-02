@@ -19,7 +19,7 @@
 <p class="mb-5">
   {{ product.description }}
 </p>
-<form action="{% url 'order:add_cart' product.slug %}" method="post">
+<form action="{% url 'cart:add' product.slug %}" method="post">
   {{ form.as_p }}
   <input type="submit" value="Add to cart">
   {% csrf_token %}
