@@ -1,4 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
+from product.models import Product
 
 CART_SESSION_ID = 'cart'
 
@@ -11,14 +12,34 @@ class Cart:
             cart = self.session[CART_SESSION_ID] = {}
         self.cart = cart
 
-    def add(self, product, quantity):
+    def __iter__(self):
+        for item in self.cart.values():
+            yield item
+
+    def __len__(self):
+        return sum(
+            item['quantity']
+            for item in self.cart.values()
+        )
+
+    def price(self):
+        return sum(
+            item['total_price']
+            for item in self.cart.values()
+        )
+
+    def add(self, product: Product, quantity):
         product_slug = product.slug
         if product_slug not in self.cart:
             self.cart[product_slug] = {
-                'quantity': 0,
-                'price': str(product.price),
+                'product': product.name,
+                'quantity': quantity,
+                'price': product.price,
             }
-        self.cart[product_slug]['quantity'] += quantity
+        else:
+            self.cart[product_slug]['quantity'] = quantity
+        item = self.cart[product_slug]
+        item['total_price'] = item['price'] * quantity
         self.save()
 
     def save(self):
