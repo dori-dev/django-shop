@@ -10,6 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
     ]
     search_fields = [
         'name',
+        'parent__name',
     ]
     prepopulated_fields = {
         'slug': [

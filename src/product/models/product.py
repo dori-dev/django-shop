@@ -9,9 +9,8 @@ class Product(models.Model):
     name = models.CharField(
         max_length=256,
     )
-    category = models.ForeignKey(
+    category = models.ManyToManyField(
         'product.Category',
-        on_delete=models.CASCADE,
         related_name='products',
     )
     slug = models.SlugField(
