@@ -55,6 +55,7 @@ LOCAL_APPS = [
     'product.apps.ProductConfig',
     'utils.apps.UtilsConfig',
     'bucket.apps.BucketConfig',
+    'order.apps.OrderConfig',
 ]
 
 INSTALLED_APPS = [
