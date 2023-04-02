@@ -29,18 +29,25 @@ class Cart:
         )
 
     def add(self, product: Product, quantity):
-        product_slug = product.slug
-        if product_slug not in self.cart:
-            self.cart[product_slug] = {
+        slug = product.slug
+        if slug not in self.cart:
+            self.cart[slug] = {
+                'slug': slug,
                 'product': product.name,
                 'quantity': quantity,
                 'price': product.price,
             }
         else:
-            self.cart[product_slug]['quantity'] = quantity
-        item = self.cart[product_slug]
+            self.cart[slug]['quantity'] = quantity
+        item = self.cart[slug]
         item['total_price'] = item['price'] * quantity
         self.save()
+
+    def remove(self, product: Product):
+        slug = product.slug
+        if slug in self.cart:
+            del self.cart[slug]
+            self.save()
 
     def save(self):
         self.session.modified = True
