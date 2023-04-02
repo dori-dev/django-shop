@@ -31,6 +31,6 @@ class Order(models.Model):
 
     def get_total_price(self):
         return sum(
-            item.get_const()
+            item.get_cost()
             for item in self.items.all()
         )
