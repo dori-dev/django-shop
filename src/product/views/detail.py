@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 from product import models
+from order.forms import CartAddForm
 
 
 class ProductDetail(View):
@@ -12,5 +13,6 @@ class ProductDetail(View):
         )
         context = {
             'product': product,
+            'form': CartAddForm(),
         }
         return render(request, 'product/detail.html', context)

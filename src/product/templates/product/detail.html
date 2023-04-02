@@ -16,7 +16,12 @@
   {{ product.price|format_comma }} Toman
 </p>
 <img src="{{ product.image.url }}" alt="{{ product.name }}">
-<p>
+<p class="mb-5">
   {{ product.description }}
 </p>
+<form action="{% url 'order:add_cart' product.slug %}" method="post">
+  {{ form.as_p }}
+  <input type="submit" value="Add to cart">
+  {% csrf_token %}
+</form>
 {% endblock content %}
