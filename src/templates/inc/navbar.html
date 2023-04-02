@@ -41,6 +41,15 @@
             </a>
           </li>
         {% endif %}
+        <li class="nav-item">
+          <a class="nav-link active d-flex align-items-center" aria-current="page" href="{% url 'cart:detail' %}">
+            <span class="me-1">Cart</span>
+            <span class="badge bg-primary">
+              {{ cart|length }} Item
+              <span class="visually-hidden">total cart items</span>
+            </span>
+          </a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
