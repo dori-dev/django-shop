@@ -10,10 +10,13 @@ class CategoryView(View):
             models.Category,
             slug=slug,
         )
-        categories = models.Category.objects.values('name', 'slug')
+        categories = models.Category.objects.filter(is_child=False)
+        current_category = category
+        while current_category.is_child:
+            current_category = current_category.parent
         context = {
             'products': category.products.filter(available=True),
             'categories': categories,
-            'current_category': category.slug,
+            'category_slug': current_category.slug,
         }
         return render(request, 'home/index.html', context)

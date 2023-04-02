@@ -12,12 +12,52 @@ Home
 {% block content %}
 <h1 class="title">Home</h1>
 
-<div class="m-5">
-  <a href="{% url 'home:index' %}" class="btn {% if current_category %}btn-outline-secondary{% else %}btn-secondary{% endif %}">All</a>
-  {% for category in categories %}
-    <a href="{% url 'product:category' category.slug %}" class="btn {% if current_category == category.slug %}btn-secondary{% else %}btn-outline-secondary{% endif %}">{{ category.name }}</a>
-  {% endfor %}
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-4 rounded category-nav">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item me-2">
+          <a href="{% url 'home:index' %}" class="btn {% if category_slug %}btn-outline-light{% else %}btn-light{% endif %}">All</a>
+        </li>
+        {% for category in categories %}
+          <li class="nav-item dropdown me-2">
+            <button class="btn {% if category_slug == category.slug %}btn-light{% else %}btn-outline-light{% endif %} dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+              {{ category.name }}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li>
+                <a href="{% url 'product:category' category.slug %}" class="dropdown-item">All</a>
+              </li>
+              {% for child in category.children.all %}
+                {% if child.children.exists %}
+                  <li class="dropend">
+                    <button type="button" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ child.name }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li>
+                        <a class="dropdown-item" href="{% url 'product:category' child.slug %}">All</a>
+                      </li>
+                      {% for child_category in child.children.all %}
+                        <li>
+                          <a class="dropdown-item" href="{% url 'product:category' child_category.slug %}">{{ child_category.name }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% else %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'product:category' child.slug %}">{{ child.name }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="row mt-4 mx-2">
   {% for product in products %}
@@ -25,7 +65,7 @@ Home
       <div class="card h-100">
         <a href="{{ product.get_absolute_url }}">
           <div class="p-4">
-            <img src="{{ product.image.url }}" class="card-img-top img-fluid w-100" alt="{{ product.name }}">
+            <img src="{{ product.image.url }}" class="product-img card-img-top img-fluid w-100" alt="{{ product.name }}">
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>

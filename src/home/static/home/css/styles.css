@@ -1,3 +1,14 @@
 h1.title {
   color: red;
 }
+
+.product-img {
+  height: 200px;
+  width: auto;
+  max-width: 100% !important;
+  object-fit: cover;
+}
+
+.category-nav {
+  width: fit-content;
+}

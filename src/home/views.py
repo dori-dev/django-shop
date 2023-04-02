@@ -9,7 +9,7 @@ class Index(View):
         products = models.Product.objects.filter(
             available=True,
         )
-        categories = models.Category.objects.values('name', 'slug')
+        categories = models.Category.objects.filter(is_child=False)
         context = {
             'products': products,
             'categories': categories,
