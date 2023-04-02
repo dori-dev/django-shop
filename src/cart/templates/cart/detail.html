@@ -51,6 +51,7 @@ Cart
           </tr>
         </tbody>
       </table>
+      <a href="{% url 'order:create' %}" class="px-5 btn btn-primary">Checkout</a>
     </div>
   {% else %}
     <h1>Your cart is empty</h1>

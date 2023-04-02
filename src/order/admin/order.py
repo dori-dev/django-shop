@@ -20,4 +20,4 @@ class OrderAdmin(admin.ModelAdmin):
     ]
 
     def total_price(self, obj):
-        return obj.get_total_price()
+        return f"{obj.get_total_price():,}"
