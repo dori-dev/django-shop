@@ -54,3 +54,4 @@ supervisorctl {status|start|stop|restart} shop
 
 use easy-thumbnails
 add orders to navbar(order list)
+if total price of order(check with item) 0 not go to the zarin pal

@@ -21,6 +21,9 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'description',
     ]
+    filter_horizontal = [
+        'category',
+    ]
 
     def link(self, model):
         url = model.get_absolute_url()

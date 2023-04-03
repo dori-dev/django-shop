@@ -30,6 +30,7 @@ class UserAdmin(BaseUserAdmin):
                     'email',
                     'phone',
                     'password',
+                    'last_login',
                 )
             }
         ),
@@ -38,7 +39,9 @@ class UserAdmin(BaseUserAdmin):
                 'fields': (
                     'is_active',
                     'is_admin',
-                    'last_login',
+                    'is_superuser',
+                    'groups',
+                    'user_permissions',
                 )
             }
         ),
@@ -76,4 +79,7 @@ class UserAdmin(BaseUserAdmin):
     ordering = [
         'full_name',
     ]
-    filter_horizontal = []
+    filter_horizontal = [
+        'groups',
+        'user_permissions',
+    ]
