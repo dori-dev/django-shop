@@ -6,7 +6,23 @@ Order Detail
 {% endblock title %}  
 
 {% block content %}
-<h3>Checkout</h3>
-<p>Total should pay: {{ order.get_total_price|format_comma }} Toman</p>
-<a href="{% url 'payment:pay' order.pk %}" class="btn btn-primary">Payment</a>
+<div class="ms-2 mt-2">
+  <h3>Checkout</h3>
+  <p>
+    Total should pay:
+    <br>
+    <s>{{ order.get_real_total_price|format_comma }}</s>
+    {{ order.get_total_price|format_comma }} Toman
+    <br>
+    {% if order.discount %}
+    <small>You get {{ order.discount }}% discount.</small>
+    {% endif %}
+  </p>
+  <form action="" method="post" class="d-flex align-items-center">
+    {{ form.code }}
+    <input type="submit" value="Apply" class="btn btn-success btn-sm ms-2">
+    {% csrf_token %}
+  </form>
+  <a href="{% url 'payment:pay' order.pk %}" class="mt-3 btn btn-primary">Payment</a>
+</div>
 {% endblock content %}

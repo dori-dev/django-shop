@@ -39,6 +39,12 @@ class Order(models.Model):
         return f'{self.user} - {self.pk}'
 
     def get_total_price(self):
+        total_price = self.get_real_total_price()
+        if self.discount:
+            total_price = int(total_price * (1 - self.discount/100))
+        return total_price
+
+    def get_real_total_price(self):
         return sum(
             item.get_cost()
             for item in self.items.all()
