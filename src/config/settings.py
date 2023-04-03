@@ -57,6 +57,7 @@ LOCAL_APPS = [
     'bucket.apps.BucketConfig',
     'cart.apps.CartConfig',
     'order.apps.OrderConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 INSTALLED_APPS = [
@@ -167,3 +168,7 @@ AWS_S3_ENDPOINT_URL = os.getenv('AWS_ENDPOINT_URL')
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_LOCAL_STORAGE = BASE_DIR / 'aws'
 os.makedirs(AWS_LOCAL_STORAGE, exist_ok=True)
+
+# Payment
+MERCHANT = os.getenv('MERCHANT')
+SANDBOX = True
