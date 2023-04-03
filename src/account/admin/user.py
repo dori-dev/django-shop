@@ -16,6 +16,9 @@ class UserAdmin(BaseUserAdmin):
     list_filter = [
         'is_admin',
     ]
+    readonly_fields = [
+        'last_login',
+    ]
     fieldsets = [
         (
             None, {
@@ -83,3 +86,10 @@ class UserAdmin(BaseUserAdmin):
         'groups',
         'user_permissions',
     ]
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        is_superuser = request.user.is_superuser
+        if not is_superuser:
+            form.base_fields['is_superuser'].disabled = True
+        return form
