@@ -23,6 +23,11 @@ class Order(models.Model):
     updated = models.DateTimeField(
         auto_now=True,
     )
+    discount = models.IntegerField(
+        blank=True,
+        null=True,
+        default=0,
+    )
 
     class Meta:
         ordering = (
