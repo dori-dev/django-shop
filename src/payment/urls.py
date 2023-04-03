@@ -3,6 +3,5 @@ from payment import views
 
 app_name = 'payment'
 urlpatterns = [
-    path('request/', views.send_request, name='request'),
-    path('verify/', views.verify, name='verify'),
+    path('<int:pk>/', views.PayOrderView.as_view(), name='pay'),
 ]

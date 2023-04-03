@@ -7,5 +7,6 @@ Order Detail
 
 {% block content %}
 <h3>Checkout</h3>
-<p>Total should pay: {{ order.get_total_price|format_comma }}</p>
+<p>Total should pay: {{ order.get_total_price|format_comma }} Toman</p>
+<a href="{% url 'payment:pay' order.pk %}" class="btn btn-primary">Payment</a>
 {% endblock content %}
