@@ -19,6 +19,7 @@ class PayOrderView(LoginRequiredMixin, View):
         )
         if order.user != request.user:
             raise Http404
+        request.session['order'] = order.pk
         data, headers = self.set_data(request, order)
         response = self.send_request(data, headers)
         return response
@@ -28,9 +29,11 @@ class PayOrderView(LoginRequiredMixin, View):
         if variables.CALLBACK_URL is None:
             variables.CALLBACK_URL = variables.verify_absolute_url(request)
         amount = order.get_total_price()
+        order.total_price = amount
+        order.save()
         description = variables.DESCRIPTION.format(
-            amount,
-            order.get_total_quantity()
+            cost=amount,
+            quantity=order.get_total_quantity()
         )
         data = {
             "MerchantID": settings.MERCHANT,
@@ -42,7 +45,7 @@ class PayOrderView(LoginRequiredMixin, View):
         data = json.dumps(data)
         headers = {
             'content-type': 'application/json',
-            'content-length': str(len(data))
+            'content-length': str(len(data)),
         }
         return data, headers
 

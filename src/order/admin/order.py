@@ -3,6 +3,9 @@ from order.admin.item import OrderItemInline
 
 
 class OrderAdmin(admin.ModelAdmin):
+    exclude = [
+        'total_price',
+    ]
     list_display = [
         'user',
         'paid',

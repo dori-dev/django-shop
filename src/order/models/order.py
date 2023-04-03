@@ -13,6 +13,10 @@ class Order(models.Model):
     paid = models.BooleanField(
         default=False,
     )
+    total_price = models.PositiveBigIntegerField(
+        null=True,
+        blank=True,
+    )
     created = models.DateTimeField(
         auto_now_add=True,
     )
