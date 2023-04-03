@@ -34,3 +34,9 @@ class Order(models.Model):
             item.get_cost()
             for item in self.items.all()
         )
+
+    def get_total_quantity(self):
+        return sum(
+            item.quantity
+            for item in self.items.all()
+        )

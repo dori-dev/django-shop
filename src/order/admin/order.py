@@ -7,6 +7,7 @@ class OrderAdmin(admin.ModelAdmin):
         'user',
         'paid',
         'total_price',
+        'total_quantity',
         'updated',
     ]
     list_filter = [
@@ -21,3 +22,6 @@ class OrderAdmin(admin.ModelAdmin):
 
     def total_price(self, obj):
         return f"{obj.get_total_price():,}"
+
+    def total_quantity(self, obj):
+        return f"{obj.get_total_quantity():,}"
