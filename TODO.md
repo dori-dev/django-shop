@@ -53,3 +53,4 @@ supervisorctl {status|start|stop|restart} shop
 
 
 use easy-thumbnails
+add orders to navbar(order list)

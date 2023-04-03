@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load number %}
 
 {% block title %}
 Order Detail
@@ -6,5 +7,5 @@ Order Detail
 
 {% block content %}
 <h3>Checkout</h3>
-<p>Total should pay: {{ order.get_total_price }}</p>
+<p>Total should pay: {{ order.get_total_price|format_comma }}</p>
 {% endblock content %}
