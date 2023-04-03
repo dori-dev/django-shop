@@ -55,3 +55,5 @@ supervisorctl {status|start|stop|restart} shop
 use easy-thumbnails
 add orders to navbar(order list)
 if total price of order(check with item) 0 not go to the zarin pal
+
+check phone with regex and save same all(like 0913 913 98913 +9813 +98 913 0913 335 and ....)
