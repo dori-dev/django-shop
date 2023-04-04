@@ -3,6 +3,7 @@ from string import ascii_letters
 
 from django.db import models
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Product(models.Model):
@@ -22,7 +23,7 @@ class Product(models.Model):
     image = models.ImageField(
         upload_to='products/%Y/%m/%d/',
     )
-    description = models.TextField()
+    description = RichTextField()
     price = models.PositiveBigIntegerField()
     available = models.BooleanField(
         default=True,

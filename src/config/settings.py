@@ -47,6 +47,7 @@ ALLOWED_HOSTS = []
 THIRD_PARTY_APPS = [
     'storages',
     'django_celery_beat',
+    'ckeditor',
 ]
 
 LOCAL_APPS = [
@@ -184,3 +185,13 @@ os.makedirs(AWS_LOCAL_STORAGE, exist_ok=True)
 # Payment
 MERCHANT = os.getenv('MERCHANT')
 SANDBOX = True
+
+# CKEditor
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 'auto',
+    }
+}
