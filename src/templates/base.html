@@ -1,4 +1,4 @@
-{% load static %}
+{% load static cache %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,9 @@
   <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-  {% include 'inc/navbar.html' %}
+  {% cache 900 navbdar %}
+    {% include 'inc/navbar.html' %}
+  {% endcache %}
   {% include 'inc/messages.html' %}
 
   {% block content %}

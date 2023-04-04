@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 from product import models
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class CategoryView(View):
     def get(self, request, slug):
         category = get_object_or_404(
