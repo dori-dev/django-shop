@@ -195,5 +195,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-# Login
+# Url
 LOGIN_URL = 'account:login'
+ADMIN_PATH = os.getenv('ADMIN_PATH', 'admin')
