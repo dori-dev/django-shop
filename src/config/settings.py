@@ -187,7 +187,6 @@ MERCHANT = os.getenv('MERCHANT')
 SANDBOX = True
 
 # CKEditor
-
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
@@ -195,3 +194,6 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
     }
 }
+
+# Login
+LOGIN_URL = 'account:login'

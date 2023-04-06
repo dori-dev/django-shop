@@ -10,12 +10,14 @@ Order Detail
   <h3>Checkout</h3>
   <p>
     Total should pay:
-    <br>
-    <s>{{ order.get_real_total_price|format_comma }}</s>
+    {% if order.discount %}
+      <br>
+      <s>{{ order.get_real_total_price|format_comma }}</s>
+    {% endif %}
     {{ order.get_total_price|format_comma }} Toman
     <br>
     {% if order.discount %}
-    <small>You get {{ order.discount }}% discount.</small>
+      <small>You get {{ order.discount }}% discount.</small>
     {% endif %}
   </p>
   <form action="" method="post" class="d-flex align-items-center">
